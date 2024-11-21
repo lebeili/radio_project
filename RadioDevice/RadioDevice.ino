@@ -81,16 +81,13 @@ void displayRefresh() {
     displayObj.refresh();
 }
 void changeChannelUp() {
-
-      tuner.seekUp();
-eventQueue.addEvent(displayRefresh);
+    tuner.seekUp();
+    eventQueue.addEvent(displayRefresh);
     
 }
 void changeChannelDown() {
-
-      tuner.seekDown();  
+    tuner.seekDown();  
     eventQueue.addEvent(displayRefresh);
-    
 }
 
 
