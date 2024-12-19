@@ -1,9 +1,9 @@
 #include "EventQueue.h"
 #include "Potentiometer.h"
 #include "RotaryEncoder.h"
-//#include "Tuner.h"
 #include "Display.h"
 #include <VMA11.h>
+
 int resetPin = 10;
 int SDIO = A4;
 int SCLK = A5;
@@ -26,7 +26,6 @@ void event2() {
 Potentiometer audioVolume;
 EventQueue eventQueue;
 RotaryEncoder channelFrequency(8,9,event2);
-//Tuner tuner;
 Display displayObj;
 
 struct {
