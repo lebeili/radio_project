@@ -15,6 +15,7 @@ class Display {
 class ST77XXAdapter: public Display {
 	public:
 	  ST77XXAdapter(): Display(); // Constructor
+	  Adafruit_ST7735 tft;
 	  void init();
 	  void drawGUI();
 	  void updateHeader(String text);
