@@ -26,7 +26,8 @@ void event2() {
 Potentiometer audioVolume;
 EventQueue eventQueue;
 RotaryEncoder channelFrequency(8,9,event2);
-Display displayObj;
+Display* displayObj;
+displayObj = new ST77XXAdapter();
 
 struct {
   int volume;
