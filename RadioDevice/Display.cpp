@@ -8,7 +8,7 @@
 #define TFT_CS   7
 #define TFT_DC   5
 #define TFT_RST  4
-Adafruit_ST7735 tft = Adafruit_ST7735(TFT_CS, TFT_DC, TFT_RST);
+
 int channel = 1;           // Current channel
 String currentSong = "Imagine - John Lennon"; // Example song name
 // Colors for easy reference
@@ -21,11 +21,13 @@ String currentSong = "Imagine - John Lennon"; // Example song name
 #define YELLOW    ST77XX_YELLOW
 
 
+ST77XXAdapter::Adafruit_ST7735 tft;
 
+ST77XXAdapter::ST77XXAdapter(){
+  tft = Adafruit_ST7735(TFT_CS, TFT_DC, TFT_RST);
+}
 
-Display::Display(){}
-
-void Display::init()
+void ST77XXAdapter::init()
 {
 
   tft.initR(INITR_BLACKTAB);  // Initialize the display
@@ -35,7 +37,7 @@ void Display::init()
   drawGUI();  // Initial GUI layout
   Serial.println("Display initialized");
 }
-void Display::drawGUI() {
+void ST77XXAdapter::drawGUI() {
   // Draw header section
   tft.fillRect(0, 0, 160, 26, BLUE);
   tft.setTextColor(WHITE);
@@ -58,7 +60,7 @@ void Display::drawGUI() {
   tft.print("Vol:");
 }
 
-void Display::updateHeader(String text) {
+void ST77XXAdapter::updateHeader(String text) {
   // Clear the previous song name area
   tft.fillRect(80, 5, 80, 10, BLUE);
   tft.fillRect(1, 13, 75, 8, BLUE);
@@ -70,7 +72,7 @@ void Display::updateHeader(String text) {
   tft.print(text);
 }
 
-void Display::updateMainInfo(float frequency, String channel) {
+void ST77XXAdapter::updateMainInfo(float frequency, String channel) {
   // Clear previous main info
   tft.fillRect(5, 28, 150, 70, BLACK);
 
@@ -89,7 +91,7 @@ void Display::updateMainInfo(float frequency, String channel) {
   tft.print(" MHz");
 }
 
-void Display::updateStatus(int volume) {
+void ST77XXAdapter::updateStatus(int volume) {
   // Clear volume info
   tft.fillRect(40, 105, 30, 10, BLACK);
 
